@@ -10,14 +10,14 @@ describe("Auth test", () => {
   }
   before(async () => {
     console.info("Generating seed of user...")
-    const Results = await db.query(`INSERT INTO "user" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT)`, [
+    await db.query(`INSERT INTO "user" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT)`, [
       seed.username, crypter.hash(seed.password)
     ])
   })
   it("Should pass when login with valid username & password", async () => {
     const results = await authApi.Login({
       username: seed.username,
-      password: crypter.hash(seed.password)
+      password: seed.password
     })
     assert.equal(results.rows.length, 1)
   })
