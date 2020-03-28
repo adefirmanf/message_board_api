@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const messageControllers = require('../controllers/messages')
+const messageControllers = require('../controllers/messageControllers')
 
 // Get all message
 router.get("/", messageControllers.MESSAGE_GET)

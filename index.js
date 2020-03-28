@@ -1,10 +1,10 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
 
-const authRouter = require('./routes/auth')
-const userRouter = require('./routes/user')
-const messageRouter = require('./routes/message')
-const commentRouter = require('./routes/comment')
+const authRouter = require('./routes/authRoutes')
+const userRouter = require('./routes/userRoutes')
+const messageRouter = require('./routes/messageRoutes')
+const commentRouter = require('./routes/commentRoutes')
 
 app.use(bodyParser.json({
   type: "application/json"

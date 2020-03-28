@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const authControllers = require('../controllers/auth')
+const authControllers = require('../controllers/authControllers')
 
 // Auth login
 router.get("/login", authControllers.AUTH_LOGIN)
