@@ -4,7 +4,7 @@ const crypter = require('../../../helpers/crypter')
 class Comment {
   async GetAll(spec) {
     try {
-      const fetch = await db.query(`SELECT * FROM "user"`)
+      const fetch = await db.query(`SELECT "uuid_", "username", "created_at", "updated_at" FROM "user"`)
       return fetch
     } catch (err) {
       throw err
@@ -12,7 +12,7 @@ class Comment {
   }
   async GetById(spec) {
     try {
-      const fetch = await db.query(`SELECT * FROM "user" WHERE uuid_ = $1`, [spec.user_id])
+      const fetch = await db.query(`SELECT "uuid_", "username", "created_at", "updated_at" FROM "user" WHERE uuid_ = $1`, [spec.user_id])
       return fetch
     } catch (err) {
       throw err
