@@ -19,7 +19,7 @@ class Message {
   }
   async Post(spec) {
     try {
-      const fetch = await db.query(`INSERT INTO "message" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT, DEFAULT)`,
+      const fetch = await db.query(`INSERT INTO "message" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT, DEFAULT) RETURNING id`,
         [spec.user_id, spec.value])
       return fetch
     }
