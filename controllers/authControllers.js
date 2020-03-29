@@ -19,7 +19,7 @@ module.exports = {
 
 function loginRender(service, req, res) {
   // Invalid authorization
-  if (service.rows.length < 1) {
+  if (service.rowCount < 1) {
     return res.status(401).json({
       message: "invalid authorization",
       data: {
