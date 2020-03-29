@@ -17,7 +17,7 @@ module.exports = {
       throw new Error(err)
     }
   },
-
+  pool,
   // Useful for graceful shutdown
   poolEnd: async () => {
     pool.end().then(() => console.log("pool has ended"))
