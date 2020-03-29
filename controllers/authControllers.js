@@ -26,8 +26,9 @@ function loginRender(service, req, res) {
     })
   }
   return res.json({
-    message: "OK",
+    message: "ok",
     data: {
+      user_id: service.rows[0].uuid_,
       username: req.body.username
     }
   })
