@@ -1,5 +1,6 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
+const cors = require('cors')
 
 const authRouter = require('./routes/authRoutes')
 const userRouter = require('./routes/userRoutes')
@@ -10,6 +11,8 @@ const voteRouter = require('./routes/voteRoutes')
 app.use(bodyParser.json({
   type: "application/json"
 }))
+
+app.use(cors())
 
 app.use("/auth", authRouter)
 app.use("/user", userRouter)
