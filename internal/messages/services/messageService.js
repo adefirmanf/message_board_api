@@ -3,7 +3,7 @@ const db = require('../../../db')
 class Message {
   async GetAll(spec) {
     try {
-      const fetch = await db.query(`SELECT * FROM "message"`)
+      const fetch = await db.query(`SELECT * FROM "message" order by created_at desc`)
       return fetch
     } catch (err) {
       throw err
