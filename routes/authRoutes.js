@@ -2,7 +2,7 @@ const router = require('express').Router()
 const authControllers = require('../controllers/authControllers')
 
 // Auth login
-router.get("/login", authControllers.AUTH_LOGIN)
+router.post("/login", authControllers.AUTH_LOGIN)
 
 // Auth logout
 router.get("/logout", authControllers.AUTH_LOGOUT)
