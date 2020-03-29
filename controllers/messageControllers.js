@@ -56,6 +56,7 @@ function _messagePostRender(data, req, res) {
   return res.status(201).json({
     status: "ok",
     data: {
+      id: data.rows[0].id,
       message: req.body.message
     }
   })
