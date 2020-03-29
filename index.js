@@ -5,6 +5,7 @@ const authRouter = require('./routes/authRoutes')
 const userRouter = require('./routes/userRoutes')
 const messageRouter = require('./routes/messageRoutes')
 const commentRouter = require('./routes/commentRoutes')
+const voteRouter = require('./routes/voteRoutes')
 
 app.use(bodyParser.json({
   type: "application/json"
@@ -14,6 +15,7 @@ app.use("/auth", authRouter)
 app.use("/user", userRouter)
 app.use("/message", messageRouter)
 app.use("/comment", commentRouter)
+app.use("/vote", voteRouter)
 
 // Check if application has been run 
 app.use("/ping", (_, res) => {
