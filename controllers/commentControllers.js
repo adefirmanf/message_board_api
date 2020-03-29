@@ -13,7 +13,7 @@ module.exports = {
   },
   COMMENT_POST_BY_MESSAGE_ID: async (req, res) => {
     const service = await commentApi.PostByMessageId({
-      user_id: req.body.user_id, // Todo : get from session
+      user_id: req.user_id, // Todo : get from session
       message_id: req.params.message_id,
       value: req.body.comment
     })

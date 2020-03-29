@@ -13,7 +13,7 @@ module.exports = {
   },
   MESSAGE_POST: async (req, res) => {
     const service = await messageApi.Post({
-      user_id: req.body.user_id, // Todo : Get from recent session 
+      user_id: req.user_id, // Todo : Get from recent session 
       value: req.body.message
     })
     _messagePostRender(service, req, res)

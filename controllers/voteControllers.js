@@ -3,28 +3,28 @@ const { voteApi } = require('../internal/votes')
 module.exports = {
   VOTE_UP_FOR_MESSAGE: async (req, res) => {
     const service = await voteApi.VOTE_UP_FOR_MESSAGE({
-      user_id: req.body.user_id,
+      user_id: req.user_id,
       message_id: req.params.message_id
     })
     _voteUpForMessageRender(service, req, res)
   },
   VOTE_DOWN_FOR_MESSAGE: async (req, res) => {
     const service = await voteApi.VOTE_DOWN_FOR_MESSAGE({
-      user_id: req.body.user_id,
+      user_id: req.user_id,
       message_id: req.params.message_id
     })
     _voteDownForMessageRender(service, req, res)
   },
   VOTE_UP_FOR_COMMENT: async (req, res) => {
     const service = await voteApi.VOTE_UP_FOR_COMMENT({
-      user_id: req.body.user_id,
+      user_id: req.user_id,
       comment_id: req.params.comment_id
     })
     _voteUpForCommentRender(service, req, res)
   },
   VOTE_DOWN_FOR_COMMENT: async (req, res) => {
     const service = await voteApi.VOTE_DOWN_FOR_COMMENT({
-      user_id: req.body.user_id,
+      user_id: req.user_id,
       comment_id: req.params.comment_id
     })
     _voteDownForCommentRender(service, req, res)

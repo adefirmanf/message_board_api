@@ -1,4 +1,6 @@
 const { authApi } = require('../internal/auth/index')
+const jwt = require('jsonwebtoken')
+
 module.exports = {
   AUTH_LOGIN: async (req, res) => {
     const service = await authApi.Login({
@@ -29,7 +31,10 @@ function loginRender(service, req, res) {
     message: "ok",
     data: {
       user_id: service.rows[0].uuid_,
-      username: req.body.username
+      username: req.body.username,
+      token: jwt.sign({
+        ...service.rows[0]
+      }, "secret")
     }
   })
 }
