@@ -28,3 +28,5 @@ app.use("/ping", (_, res) => {
 app.listen(3000, () => {
   console.log(`Port is listening on 3000`)
 })
+
+module.exports = app
