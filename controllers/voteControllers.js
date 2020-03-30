@@ -34,14 +34,14 @@ module.exports = {
 function _voteUpForMessageRender(data, req, res) {
   if (data.rowCount < 1) {
     return res.status(500).json({
-      status: "error",
+      message: "error",
       data: {
         message: "unknown error",
       }
     })
   }
   res.status(200).json({
-    status: "ok",
+    message: "ok",
     data: {
       total_vote: data.rows[0].total_vote
     }
