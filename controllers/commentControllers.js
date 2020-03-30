@@ -24,7 +24,7 @@ module.exports = {
 function _commentGetByAllRender(data, req, res) {
   const results = data.rows.map(n => n)
   res.status(200).json({
-    status: "ok",
+    message: "ok",
     data: results
   })
 }
@@ -32,14 +32,14 @@ function _commentGetByAllRender(data, req, res) {
 function _commentGetByMessageIdRender(data, req, res) {
   const results = data.rows.map(n => n)
   res.status(200).json({
-    status: "ok",
+    message: "ok",
     data: results
   })
 }
 
 function _commentPostByMessageId(data, req, res) {
   res.status(201).json({
-    status: "ok",
+    message: "ok",
     data: {
       id: data.rows[0].id,
       comment: req.body.comment

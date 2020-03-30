@@ -23,7 +23,7 @@ module.exports = {
 function _messageGetAll(data, req, res) {
   const results = data.rows.map(n => n)
   return res.status(200).json({
-    status: "ok",
+    message: "ok",
     data: results
   })
 }
@@ -31,7 +31,7 @@ function _messageGetAll(data, req, res) {
 function _messageGetById(data, req, res) {
   if (data.rowCount < 1) {
     return res.status(404).json({
-      status: "not found",
+      message: "not found",
       data: {
         error: `message with id ${req.params.id} not found`
       }
@@ -39,7 +39,7 @@ function _messageGetById(data, req, res) {
   }
   const results = data.rows.map(n => n)
   return res.status(200).json({
-    status: "ok",
+    message: "ok",
     data: results
   })
 }
@@ -47,14 +47,14 @@ function _messageGetById(data, req, res) {
 function _messagePostRender(data, req, res) {
   if (data.rowCount < 1) {
     return res.status(500).json({
-      status: "error",
+      message: "error",
       data: {
         error: "unknown error"
       }
     })
   }
   return res.status(201).json({
-    status: "ok",
+    message: "ok",
     data: {
       id: data.rows[0].id,
       message: req.body.message
