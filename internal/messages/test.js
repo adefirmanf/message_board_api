@@ -20,7 +20,6 @@ describe("Message test", () => {
   let messageId;
 
   before(async () => {
-    console.info("Generating seed of messages...")
     await db.query(`INSERT INTO "message" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT, DEFAULT)`, [
       seed.user_id, seed.message[0]
     ])
@@ -59,7 +58,6 @@ describe("Message test", () => {
   })
 
   after(async () => {
-    console.info("Cleaning seed of message...")
     const Results = await db.query(`DELETE FROM "message" WHERE user_uuid = $1`, [
       seed.user_id])
   })

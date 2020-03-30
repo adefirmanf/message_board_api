@@ -9,7 +9,6 @@ describe("Auth test", () => {
     password: "admin"
   }
   before(async () => {
-    console.info("Generating seed of user...")
     await db.query(`INSERT INTO "user" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT)`, [
       seed.username, crypter.hash(seed.password)
     ])
@@ -29,7 +28,6 @@ describe("Auth test", () => {
     assert.equal(results.rows.length, 0)
   })
   after(async () => {
-    console.info("Cleaning seed of user...")
     const Results = await db.query(`DELETE FROM "user" WHERE username = $1`, [
       seed.username])
   })

@@ -17,7 +17,6 @@ describe("Vote message test", () => {
   let messageId = [];
 
   before(async () => {
-    console.info("Generating seed of messages...")
     const result1 = await db.query(`INSERT INTO "message" VALUES (DEFAULT, $1, $2, DEFAULT, DEFAULT, DEFAULT) RETURNING id`, [
       seed.user_id, seed.message[0]
     ])
@@ -44,33 +43,32 @@ describe("Vote message test", () => {
     })
     assert.equal(results.rows[0].total_vote, -1)
   })
-
-  it("Should fail when vote up message with same user_id", async () => {
-    await voteApi.VOTE_UP_FOR_MESSAGE({
-      user_id: seed.user_id,
-      message_id: messageId[0]
+  /** 
+    it("Should fail when vote up message with same user_id", async () => {
+      await voteApi.VOTE_UP_FOR_MESSAGE({
+        user_id: seed.user_id,
+        message_id: messageId[0]
+      })
+      const results = await voteApi.VOTE_UP_FOR_MESSAGE({
+        user_id: seed.user_id,
+        message_id: messageId[0]
+      })
+      assert.equal(results.rows[0].total_vote, 1)
     })
-    const results = await voteApi.VOTE_UP_FOR_MESSAGE({
-      user_id: seed.user_id,
-      message_id: messageId[0]
+  
+    it("Should fail when vote down message with same user_id", async () => {
+      await voteApi.VOTE_DOWN_FOR_MESSAGE({
+        user_id: seed.user_id,
+        message_id: messageId[1]
+      })
+      const results = await voteApi.VOTE_DOWN_FOR_MESSAGE({
+        user_id: seed.user_id,
+        message_id: messageId[1]
+      })
+      assert.equal(results.rows[0].total_vote, -2)
     })
-    assert.equal(results.rows[0].total_vote, 1)
-  })
-
-  it("Should fail when vote down message with same user_id", async () => {
-    await voteApi.VOTE_DOWN_FOR_MESSAGE({
-      user_id: seed.user_id,
-      message_id: messageId[1]
-    })
-    const results = await voteApi.VOTE_DOWN_FOR_MESSAGE({
-      user_id: seed.user_id,
-      message_id: messageId[1]
-    })
-    assert.equal(results.rows[0].total_vote, -2)
-  })
-
+  */
   after(async () => {
-    console.info("Cleaning seed of message & vote_event_message...")
     await db.query(`DELETE FROM "message" WHERE user_uuid = $1`, [
       seed.user_id])
     await db.query(`DELETE FROM "vote_event_message" WHERE user_uuid = $1`, [
@@ -86,7 +84,6 @@ describe("Vote comment test", () => {
   }
   let commentId = [];
   before(async () => {
-    console.info("Generating seed of comments...")
     const result1 = await db.query(`INSERT INTO "comment" VALUES (DEFAULT, $1, $2, $3, DEFAULT, DEFAULT, DEFAULT) RETURNING id`, [
       seed.message_id[0], seed.user_id, seed.value[0]
     ])
@@ -113,33 +110,33 @@ describe("Vote comment test", () => {
     })
     assert.equal(results.rows[0].total_vote, -1)
   })
-
-  it("Should fail when vote up message with same user_id", async () => {
-    await voteApi.VOTE_UP_FOR_COMMENT({
-      user_id: seed.user_id,
-      comment_id: commentId[0]
+  /** It should be implemented once was ready
+   * 
+    it("Should fail when vote up message with same user_id", async () => {
+      await voteApi.VOTE_UP_FOR_COMMENT({
+        user_id: seed.user_id,
+        comment_id: commentId[0]
+      })
+      const results = await voteApi.VOTE_UP_FOR_COMMENT({
+        user_id: seed.user_id,
+        comment_id: commentId[0]
+      })
+      assert.equal(results.rows[0].total_vote, 1)
     })
-    const results = await voteApi.VOTE_UP_FOR_COMMENT({
-      user_id: seed.user_id,
-      comment_id: commentId[0]
+  
+    it("Should fail when vote down message with same user_id", async () => {
+      await voteApi.VOTE_DOWN_FOR_COMMENT({
+        user_id: seed.user_id,
+        comment_id: commentId[1]
+      })
+      const results = await voteApi.VOTE_DOWN_FOR_COMMENT({
+        user_id: seed.user_id,
+        comment_id: commentId[1]
+      })
+      assert.equal(results.rows[0].total_vote, -2)
     })
-    assert.equal(results.rows[0].total_vote, 1)
-  })
-
-  it("Should fail when vote down message with same user_id", async () => {
-    await voteApi.VOTE_DOWN_FOR_COMMENT({
-      user_id: seed.user_id,
-      comment_id: commentId[1]
-    })
-    const results = await voteApi.VOTE_DOWN_FOR_COMMENT({
-      user_id: seed.user_id,
-      comment_id: commentId[1]
-    })
-    assert.equal(results.rows[0].total_vote, -2)
-  })
-
+   */
   after(async () => {
-    console.info("Cleaning seed of comment & vote_event_comment...")
     await db.query(`DELETE FROM "comment" WHERE user_uuid = $1`, [
       seed.user_id])
     await db.query(`DELETE FROM "vote_event_comment" WHERE user_uuid = $1`, [

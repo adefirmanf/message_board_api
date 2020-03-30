@@ -11,7 +11,6 @@ describe("Comment test", () => {
   let messageId;
 
   before(async () => {
-    console.info("Generating seed of messages...")
     await db.query(`INSERT INTO "comment" VALUES (DEFAULT, $1, $2, $3, DEFAULT, DEFAULT, DEFAULT)`, [
       seed.message_id[0], seed.user_id, seed.value[0]
     ])
@@ -29,7 +28,7 @@ describe("Comment test", () => {
 
   it("Should pass when get message by valid id", async () => {
     const results = await commentApi.GetByMessageId({
-      message_id: messageId
+      message_id: seed.message_id[1]
     })
     assert.ok(results.rows.length > 0)
   })
@@ -51,7 +50,6 @@ describe("Comment test", () => {
   })
 
   after(async () => {
-    console.info("Cleaning seed of message...")
     const Results = await db.query(`DELETE FROM "comment" WHERE user_uuid = $1`, [
       seed.user_id])
   })
