@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 describe("Service Test [DB Connection required]", () => {
   require('../internal/auth/test')
   require('../internal/users/test')
