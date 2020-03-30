@@ -14,11 +14,15 @@
   },
   "devDependencies": {
     "assert": "^2.0.0",
-    "mocha": "^7.1.1"
+    "mocha": "^7.1.1",
+    "nyc": "^15.0.0",
+    "sinon": "^9.0.1",
+    "supertest": "^4.0.2"
   },
   "scripts": {
     "start": "node index.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha test",
+    "test-with-coverages": "nyc --reporter=lcov --reporter=text-summary mocha"
   },
   "author": "",
   "license": "ISC"
