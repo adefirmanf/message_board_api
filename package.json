@@ -25,7 +25,7 @@
   "scripts": {
     "postinstall": "node ./node_modules/db-migrate/bin/db-migrate up --migrations-dir db/migrations --config database.json -e local",
     "start": "node index.js",
-    "test": "node -r dotenv mocha test",
+    "test": "dotenv mocha test",
     "test-with-coverages": "nyc --reporter=lcov --reporter=text-summary mocha"
   },
   "author": "",
