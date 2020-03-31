@@ -44,6 +44,8 @@ Looking for API Documentation?
 
 For more info, you can check our wiki
 
+https://github.com/adefirmanf/message_board_api/wiki/API-Documentation
+
 ### Test & Coverage check
 
 #### Service test & E2E test
